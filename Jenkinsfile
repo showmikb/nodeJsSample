@@ -35,8 +35,8 @@ pipeline{
 
 			steps {
 			  sh 'aws eks update-kubeconfig --region us-west-1 --name demo'
-        sh 'sudo kubectl apply -f deploy.yaml'
-        sh 'sudo kubectl rollout restart deployment server-demo'
+        sh 'kubectl apply -f deploy.yaml'
+        sh 'kubectl rollout restart deployment server-demo'
         sh 'aws iam get-role --role-name "AWSServiceRoleForElasticLoadBalancing" || aws iam create-service-linked-role --aws-service-name "elasticloadbalancing.amazonaws.com"'
 			}
 		}
